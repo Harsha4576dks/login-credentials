@@ -31,7 +31,7 @@ async def register(user: UserCreate):
     await database.execute(query)
     return {"message" : "user registered successfully"}
 
-@app.post("/login")
+@app.get("/login")
 async def login(user: UserLogin):
     query = users.select().where(users.c.username == user.username)
     existing_user = await database.fetch_one(query)
